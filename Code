@@ -1,0 +1,18 @@
+import tweepy
+from textblob import TextBlob
+consumer_key='x1oZYOMY7lxuLd5h9vu7LQMUb'
+consumer_secret='h6MK12ol8PNv8myNjH2AJ1wuSzoelLTijJWrIUHEiXmYQPablp'
+
+access_token='432740566-XX9XjBVecTRLabaDkReC9HJgc6IFXR5Mv6gMVUN0'
+access_token_secret='POBdjGZFd6QvS0z2zTm24EDkR37UALOUGsDpfuQWpserL'
+
+auth=tweepy.OAuthHandler(consumer_key,consumer_secret)
+auth.set_access_token(access_token,access_token_secret)
+
+api=tweepy.API(auth)
+tweets=api.search('Kohli')
+for tweet in tweets:
+    print(tweet.text)
+    analysis=TextBlob(tweet.text)
+    print(analysis.sentiment)
+    
